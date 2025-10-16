@@ -1,0 +1,91 @@
+<div class="min-h-screen flex items-center justify-center bg-blue-500/95">
+  <div class="w-full max-w-lg">
+    <div class="mb-6 text-center">
+      <div class="inline-flex items-center gap-3">
+        <div class="w-10 h-10 rounded-lg bg-blue-500 flex items-center justify-center text-white font-bold">IF</div>
+        <div class="text-xl font-semibold text-white">Create your account</div>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">Sign up to manage orders and view insights.</p>
+    </div>
+
+    <div class="bg-white dark:bg-indigo-800 rounded-xl shadow-lg p-6">
+      <form (ngSubmit)="submit()" [formGroup]="signupForm" novalidate class="space-y-4">
+        <div *ngIf="error" class="text-sm text-red-500 bg-red-50 border border-red-100 p-2 rounded">
+          {{ error }}
+        </div>
+
+        <!-- Name -->
+        <label class="block">
+          <div class="text-sm font-medium mb-1 text-gray-700 dark:text-indigo-100">Full name</div>
+          <input type="text" formControlName="name" class="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring-2  dark:text-black-100" placeholder="Your name" />
+          <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched" class="text-xs text-red-500 mt-1">
+            Name is required and should be at least 2 characters
+          </div>
+        </label>
+
+        <!-- Email -->
+        <label class="block">
+          <div class="text-sm font-medium mb-1 text-gray-700 dark:text-indigo-100">Email</div>
+          <input type="email" formControlName="email" class="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring-2  dark:text-black-100" placeholder="you@example.com" />
+          <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-xs text-red-500 mt-1">
+            Provide a valid email address
+          </div>
+        </label>
+
+        <!-- Role -->
+        <div>
+          <div class="text-sm font-medium mb-2 text-gray-700 dark:text-indigo-100">I am a</div>
+          <div class="grid grid-cols-2 gap-2">
+            <label class="p-3 border rounded cursor-pointer" [class.border-blue-500]="signupForm.get('role')?.value === 'customer'">
+              <input type="radio" formControlName="role" value="customer" class="hidden" />
+              <div class="text-sm font-medium">Customer</div>
+              <div class="text-xs text-gray-500">Shop and track orders</div>
+            </label>
+            <label class="p-3 border rounded cursor-pointer" [class.border-blue-500]="signupForm.get('role')?.value === 'vendor'">
+              <input type="radio" formControlName="role" value="vendor" class="hidden" />
+              <div class="text-sm font-medium">Vendor</div>
+              <div class="text-xs text-gray-500">Manage inventory & fulfill orders</div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Passwords -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <label class="block">
+            <div class="text-sm font-medium mb-1 text-gray-700 dark:text-indigo-100">Password</div>
+            <input type="password" formControlName="password" class="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400  dark:text-black-100" placeholder="Create password" />
+            <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-xs text-red-500 mt-1">
+              Password must be at least 6 characters.
+            </div>
+          </label>
+
+          <label class="block">
+            <div class="text-sm font-medium mb-1 text-gray-700 dark:text-indigo-100">Confirm</div>
+            <input type="password" formControlName="confirm" class="w-full px-4 py-2 rounded-md border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-400  dark:text-black-100" placeholder="Repeat password" />
+            <div *ngIf="signupForm.hasError('passwordMismatch') && signupForm.get('confirm')?.touched" class="text-xs text-red-500 mt-1">
+              Passwords do not match.
+            </div>
+          </label>
+        </div>
+
+        <!-- Terms -->
+        <label class="flex items-start gap-2 text-sm text-gray-600 dark:text-indigo-200">
+          <input type="checkbox" formControlName="acceptTerms" class="mt-1" />
+          <span>I agree to the <a routerLink="/legal/terms" class="text-blue-500 hover:underline">Terms</a> and <a routerLink="/legal/privacy" class="text-blue-500 hover:underline">Privacy</a>.</span>
+        </label>
+
+        <div>
+          <button type="submit" [disabled]="signupForm.invalid || loading" class="w-full py-2 rounded-md bg-blue-500/95 hover:bg-blue-900/95 text-white">
+            <span *ngIf="!loading">Create account</span>
+            <span *ngIf="loading">Creating…</span>
+          </button>
+        </div>
+
+        <div class="text-center text-xs text-gray-400">
+          Already have an account?
+          <a routerLink="/auth/login" class="text-blue-500 hover:underline" [routerLink]="['/login']">Sign in</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

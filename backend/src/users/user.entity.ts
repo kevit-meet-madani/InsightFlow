@@ -24,6 +24,9 @@ export class User {
   @Column({ nullable: true })
   avatarUrl?: string;
 
+  @Column({ type: 'simple-array' ,nullable: true })
+  addresses?: string[];
+
   @Column({ default: true })
   isActive: boolean;
 

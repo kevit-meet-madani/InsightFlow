@@ -5,6 +5,7 @@ export declare class User {
     password: string;
     role: string;
     avatarUrl?: string;
+    addresses?: string[];
     isActive: boolean;
     createdAt: Date;
     updatedAt: Date;

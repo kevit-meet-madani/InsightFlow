@@ -18,6 +18,7 @@ let User = class User {
     password;
     role;
     avatarUrl;
+    addresses;
     isActive;
     createdAt;
     updatedAt;
@@ -51,6 +52,10 @@ __decorate([
     (0, typeorm_1.Column)({ nullable: true }),
     __metadata("design:type", String)
 ], User.prototype, "avatarUrl", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ type: 'simple-array', nullable: true }),
+    __metadata("design:type", Array)
+], User.prototype, "addresses", void 0);
 __decorate([
     (0, typeorm_1.Column)({ default: true }),
     __metadata("design:type", Boolean)

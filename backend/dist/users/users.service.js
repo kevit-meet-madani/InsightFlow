@@ -26,8 +26,8 @@ let UsersService = class UsersService {
         const res = this.userRepo.create(data);
         return this.userRepo.save(res);
     }
-    findByUserName(username) {
-        return this.userRepo.findOneBy({});
+    findByEmail(email) {
+        return this.userRepo.findOne({ where: { email }, select: ['password', 'role', 'id'] });
     }
     getUserById(id) {
         return this.userRepo.findOneBy({});

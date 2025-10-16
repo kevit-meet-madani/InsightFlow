@@ -1,0 +1,43 @@
+<section class="relative overflow-hidden py-16 md:py-24 bg-blue-500">
+  <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <!-- Left: Content -->
+      <div class="animate-fade-up">
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-foreground leading-tight">
+          Real-time order intelligence
+          <span class="bg-clip-text text-transparent gradient-primary"> from cart to delivery</span>
+        </h1>
+        <p class="mt-6 text-lg text-muted-foreground max-w-xl">
+          InsightFlow brings a unified experience for customers, vendors, and admins.
+          View live order status, actionable analytics, and lightning-fast search.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <button class="rounded-full shadow-glow px-6 py-3 bg-blue-600 text-white flex items-center gap-2">
+            Create free account
+            <span class="ml-2">→</span>
+          </button>
+        </div>
+
+        <!-- Hero Search -->
+      </div>
+
+      <!-- Right: Product Preview -->
+      <div class="order-first lg:order-last animate-fade-in">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <app-product-card *ngFor="let p of products.slice(0,4)" [product]="p"></app-product-card>
+        </div>
+
+        <div class="mt-6 rounded-2xl p-6 border shadow-md bg-white">
+          <p class="text-sm text-muted-foreground">
+            Built for modern teams — scalable, observable, and cloud-friendly.Sign up to onboard your store in minutes.
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <button class="px-4 py-2 rounded-full bg-green-600 text-white">Start free</button>
+            <button class="px-4 py-2 rounded-full border">Documentation</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

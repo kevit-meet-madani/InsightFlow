@@ -14,8 +14,8 @@ export class UsersService {
       return this.userRepo.save(res);
     }
 
-    findByUserName(username:string){
-        return this.userRepo.findOneBy({});
+    findByEmail(email:string){
+        return this.userRepo.findOne({where:{email},select:['password', 'role','id']});
     }
 
     getUserById(id:number){

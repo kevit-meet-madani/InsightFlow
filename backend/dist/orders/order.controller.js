@@ -24,6 +24,9 @@ let OrderController = class OrderController {
     createOrder(body) {
         return this.orderService.createOrder(body);
     }
+    getAllOrders() {
+        return this.orderService.getAllOrders();
+    }
 };
 exports.OrderController = OrderController;
 __decorate([
@@ -33,6 +36,12 @@ __decorate([
     __metadata("design:paramtypes", [createorder_dto_1.CreateOrderDto]),
     __metadata("design:returntype", void 0)
 ], OrderController.prototype, "createOrder", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], OrderController.prototype, "getAllOrders", null);
 exports.OrderController = OrderController = __decorate([
     (0, common_1.Controller)('orders'),
     __metadata("design:paramtypes", [order_service_1.OrderService])

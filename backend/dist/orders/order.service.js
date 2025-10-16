@@ -83,6 +83,9 @@ let OrderService = class OrderService {
             order,
         };
     }
+    getAllOrders() {
+        return this.orderRepo.find();
+    }
 };
 exports.OrderService = OrderService;
 exports.OrderService = OrderService = __decorate([

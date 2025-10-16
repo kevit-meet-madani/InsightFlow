@@ -22,7 +22,7 @@ export class CreateUserDto {
   password: string;
 
   @IsEnum(['admin', 'vendor', 'customer'])
-  @IsOptional()
+  @IsNotEmpty()
   role?: 'admin' | 'vendor' | 'customer';
 
   @IsString()

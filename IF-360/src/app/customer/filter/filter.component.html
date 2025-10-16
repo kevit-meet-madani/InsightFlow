@@ -1,0 +1,42 @@
+<div class="flex flex-col gap-4">
+
+  <!-- Category Filter -->
+  <div>
+    <h3 class="font-semibold mb-2">Category</h3>
+    <select [(ngModel)]="selectedCategory" (change)="applyFilters()" class="w-full border rounded px-2 py-1">
+      <option value="">All</option>
+      <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+    </select>
+  </div>
+
+  <!-- Inventory Status Filter -->
+  <div>
+    <h3 class="font-semibold mb-2">Availability</h3>
+    <select [(ngModel)]="selectedStatus" (change)="applyFilters()" class="w-full border rounded px-2 py-1">
+      <option value="">All</option>
+      <option *ngFor="let s of inventoryStatuses" [value]="s">{{ s }}</option>
+    </select>
+  </div>
+
+  <!-- Price Range Filter -->
+  <div>
+    <h3 class="font-semibold mb-2">Price Range</h3>
+    <div class="flex gap-2">
+      <input type="number" [(ngModel)]="priceRange.min" (input)="applyFilters()" placeholder="Min" class="w-1/2 border rounded px-2 py-1"/>
+      <input type="number" [(ngModel)]="priceRange.max" (input)="applyFilters()" placeholder="Max" class="w-1/2 border rounded px-2 py-1"/>
+    </div>
+  </div>
+
+  <!-- Rating Filter -->
+  <div>
+    <h3 class="font-semibold mb-2">Minimum Rating</h3>
+    <select [(ngModel)]="rating" (change)="applyFilters()" class="w-full border rounded px-2 py-1">
+      <option value="">All</option>
+      <option *ngFor="let r of [1,2,3,4,5]" [value]="r">{{ r }} & Up</option>
+    </select>
+  </div>
+
+  <!-- Reset Button -->
+  <button (click)="resetFilters()" class="mt-4 w-full py-2 bg-gray-200 rounded hover:bg-gray-300 font-medium">Reset Filters</button>
+
+</div>

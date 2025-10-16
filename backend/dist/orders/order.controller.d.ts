@@ -7,4 +7,5 @@ export declare class OrderController {
         message: string;
         order: import("./order.entity").Order;
     }>;
+    getAllOrders(): Promise<import("./order.entity").Order[]>;
 }

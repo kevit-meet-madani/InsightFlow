@@ -73,13 +73,14 @@ let AuthService = class AuthService {
         };
     }
     async login(loginDto) {
-        const user = await this.usersService.findByUserName(loginDto.email);
+        const user = await this.usersService.findByEmail(loginDto.email);
         if (!user)
             throw new common_1.UnauthorizedException('User not found');
+        console.log(loginDto.password + "---`" + user.password);
         const isMatch = await bcrypt.compare(loginDto.password, user.password);
         if (!isMatch)
             throw new common_1.UnauthorizedException('Invalid credentials');
-        const payload = { sub: user.id, username: user.name };
+        const payload = { id: user.id, role: user.role };
         const access_token = this.jwtService.sign(payload, { secret: process.env.JWT_SECRET, expiresIn: '15m' });
         const refresh_token = this.jwtService.sign(payload, { secret: process.env.JWT_SECRET, expiresIn: '7d' });
         await this.redisService.set(`refresh:${user.id}`, refresh_token, 7 * 24 * 3600);

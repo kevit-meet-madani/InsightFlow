@@ -11,6 +11,7 @@ export declare class AuthController {
             email: string;
             role: string;
             avatarUrl?: string;
+            addresses?: string[];
             isActive: boolean;
             createdAt: Date;
             updatedAt: Date;

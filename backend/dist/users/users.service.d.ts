@@ -5,7 +5,7 @@ export declare class UsersService {
     private userRepo;
     constructor(userRepo: Repository<User>);
     createUser(data: CreateUserDto): Promise<User>;
-    findByUserName(username: string): Promise<User | null>;
+    findByEmail(email: string): Promise<User | null>;
     getUserById(id: number): Promise<User | null>;
     findAll(): Promise<User[]>;
     updateUser(id: number, data: User): Promise<import("typeorm").UpdateResult>;

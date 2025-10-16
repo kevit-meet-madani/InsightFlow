@@ -18,4 +18,5 @@ export declare class OrderService {
         message: string;
         order: Order;
     }>;
+    getAllOrders(): Promise<Order[]>;
 }
