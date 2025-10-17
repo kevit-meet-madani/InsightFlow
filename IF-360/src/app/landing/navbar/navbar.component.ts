@@ -22,7 +22,7 @@ export class NavbarComponent {
     const q = this.query.trim().toLowerCase();
     this.filtered = q
       ? SAMPLE_PRODUCTS.filter(p =>
-          p.title.toLowerCase().includes(q) || p.subtitle.toLowerCase().includes(q)
+          p.name.toLowerCase().includes(q) || p.subtitle?.toLowerCase().includes(q)
         ).slice(0, 4)
       : [];
   }
@@ -35,7 +35,7 @@ export class NavbarComponent {
   }
 
   handleSuggestionClick(product: Product) {
-    this.query = product.title;
+    this.query = product.name;
     this.showSuggestions = false;
     console.log('Selected product:', product);
   }

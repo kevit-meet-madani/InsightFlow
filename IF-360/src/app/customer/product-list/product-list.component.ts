@@ -1,15 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../shared.service';
+import { Product } from '../../product.model';
+import { CustomerService } from '../customer.service';
 
 
-interface Product {
-  id: number;
-  name: string;
-  category: string;
-  price: number;
-  rating: number;
-  inventoryStatus: 'INSTOCK' | 'LOWSTOCK' | 'OUTOFSTOCK';
-  image: string;
-}
+
 
 @Component({
   selector: 'app-product-list',
@@ -22,94 +17,23 @@ export class ProductListComponent implements OnInit {
   filteredProducts: Product[] = [];
   currentpage = 1
 
-  constructor() { }
+  constructor(private sharedSErvice:SharedService,private customerService:CustomerService) { }
+
+  
 
   ngOnInit(): void {
     // Sample product data
-    this.products = [
-      {
-        id: 1,
-        name: 'Bamboo Watch',
-        category: 'Accessories',
-        price: 65,
-        rating: 4.2,
-        inventoryStatus: 'INSTOCK',
-        image: 'bamboo-watch.jpg'
-      },
-      {
-        id: 2,
-        name: 'Black Watch',
-        category: 'Accessories',
-        price: 72,
-        rating: 4.0,
-        inventoryStatus: 'LOWSTOCK',
-        image: 'black-watch.jpg'
-      },
-      {
-        id: 3,
-        name: 'Blue Band',
-        category: 'Fitness',
-        price: 79,
-        rating: 3.5,
-        inventoryStatus: 'OUTOFSTOCK',
-        image: 'blue-band.jpg'
-      },
-      {
-        id: 1,
-        name: 'Bamboo Watch',
-        category: 'Accessories',
-        price: 65,
-        rating: 4.2,
-        inventoryStatus: 'INSTOCK',
-        image: 'bamboo-watch.jpg'
-      },
-      {
-        id: 2,
-        name: 'Black Watch',
-        category: 'Accessories',
-        price: 72,
-        rating: 4.0,
-        inventoryStatus: 'LOWSTOCK',
-        image: 'black-watch.jpg'
-      },
-      {
-        id: 3,
-        name: 'Blue Band',
-        category: 'Fitness',
-        price: 79,
-        rating: 3.5,
-        inventoryStatus: 'OUTOFSTOCK',
-        image: 'blue-band.jpg'
-      },
-      {
-        id: 1,
-        name: 'Bamboo Watch',
-        category: 'Accessories',
-        price: 65,
-        rating: 4.2,
-        inventoryStatus: 'INSTOCK',
-        image: 'bamboo-watch.jpg'
-      },
-      {
-        id: 2,
-        name: 'Black Watch',
-        category: 'Accessories',
-        price: 72,
-        rating: 4.0,
-        inventoryStatus: 'LOWSTOCK',
-        image: 'black-watch.jpg'
-      },
-      {
-        id: 3,
-        name: 'Blue Band',
-        category: 'Fitness',
-        price: 79,
-        rating: 3.5,
-        inventoryStatus: 'OUTOFSTOCK',
-        image: 'blue-band.jpg'
-      },
-      // Add more products as needed
-    ];
+    
+
+    this.customerService.getProducts().subscribe(data => {
+      this.products = data;
+      this.filteredProducts = this.products;
+    })
+    
+
+    this.sharedSErvice.event$.subscribe(filters => {
+      this.onFilterChange(filters);
+    })
   }
 
   // Returns severity for p-tag based on inventoryStatus

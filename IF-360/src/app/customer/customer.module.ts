@@ -5,7 +5,7 @@ import { CustomerHomeComponent } from './home/home.component';
 import { routes } from './customer.routes'; // ✅ remove extra dot
 import { CustomerNavbarComponent } from './navbar/navbar.component';
 import { FormsModule } from '@angular/forms';
-import { provideHttpClient, withFetch } from '@angular/common/http';
+import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
 import { ProductListComponent } from './product-list/product-list.component';
 import { FilterComponent } from './filter/filter.component';
 import { DataViewModule } from 'primeng/dataview';
@@ -13,6 +13,11 @@ import { TagModule } from 'primeng/tag';
 import { ButtonModule } from 'primeng/button';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { CustomerFooterComponent } from './footer/footer.component';
+import { BadgeModule } from 'primeng/badge';
+import { CustomerService } from './customer.service';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +25,9 @@ import { CustomerFooterComponent } from './footer/footer.component';
     CustomerNavbarComponent,
     ProductListComponent,
     FilterComponent,
-    CustomerFooterComponent
+    CustomerFooterComponent,
+    OrdersComponent,
+    OrderTrackerComponent
   ],
   imports: [
     CommonModule,
@@ -30,9 +37,12 @@ import { CustomerFooterComponent } from './footer/footer.component';
     DataViewModule,
     TagModule,
     ButtonModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    BadgeModule,
+    HttpClientModule
   ],
   providers:[
+    CustomerService,
     provideHttpClient(withFetch())
   ]
 })

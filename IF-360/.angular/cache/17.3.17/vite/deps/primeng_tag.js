@@ -1,14 +1,14 @@
 import {
-  PrimeTemplate,
-  SharedModule
-} from "./chunk-U4NVJR73.js";
-import {
   CommonModule,
   NgClass,
   NgIf,
   NgStyle,
   NgTemplateOutlet
-} from "./chunk-ZQGI3ZYG.js";
+} from "./chunk-T76FZRMF.js";
+import {
+  PrimeTemplate,
+  SharedModule
+} from "./chunk-MW6N3XTI.js";
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -42,7 +42,8 @@ import {
   ɵɵtemplate,
   ɵɵtext,
   ɵɵtextInterpolate
-} from "./chunk-6DT2DWOU.js";
+} from "./chunk-6JJ7KVRE.js";
+import "./chunk-T4QU4GDF.js";
 
 // node_modules/primeng/fesm2022/primeng-tag.mjs
 var _c0 = ["*"];

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { SharedService } from '../../shared.service';
 
 @Component({
   selector: 'app-filter',
@@ -19,13 +20,13 @@ export class FilterComponent implements OnInit {
   priceRange: { min: number; max: number } = { min: 0, max: 1000 };
   rating: number | null = null;
 
-  constructor() { }
+  constructor(private sharedService:SharedService) { }
 
   ngOnInit(): void {}
 
   // Emit filter whenever it changes
   applyFilters() {
-    this.filterChange.emit({
+    this.sharedService.emitEvent({
       category: this.selectedCategory,
       status: this.selectedStatus,
       minPrice: this.priceRange.min,
