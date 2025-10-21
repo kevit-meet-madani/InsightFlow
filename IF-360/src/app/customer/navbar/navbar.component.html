@@ -4,7 +4,7 @@
 
       <!-- Logo -->
       <div class="flex items-center gap-3">
-        <a routerLink="/" class="flex items-center gap-3 hover:opacity-80">
+        <a routerLink="/customer" class="flex items-center gap-3 hover:opacity-80">
           <div class="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-900 text-white font-bold text-lg shadow-md">
             IF
           </div>
@@ -60,7 +60,7 @@
       <div class="hidden md:flex items-center gap-3">
 
         <!-- Profile Button -->
-        <button class="flex items-center gap-2 border rounded-full px-4 py-2 hover:bg-gray-100"> 
+        <button class="flex items-center gap-2 border rounded-full px-4 py-2 hover:bg-gray-100" [routerLink]="['/customer/profile']"> 
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
           </svg>
@@ -68,7 +68,7 @@
         </button>
 
         <!-- Cart Button -->
-        <button class="flex items-center gap-2 border rounded-full px-4 py-2 hover:bg-gray-100">
+        <button class="flex items-center gap-2 border rounded-full px-4 py-2 hover:bg-gray-100" [routerLink]="['/customer/cart']"> 
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7.5M7 13h10l1.5 7.5M16 13l1.5 7.5M9 21h6" />
           </svg>
@@ -159,7 +159,7 @@
       <div class="flex gap-2">
 
         <!-- Profile Button -->
-        <button class="flex items-center justify-center gap-2 flex-1 border rounded-full py-2 px-4 hover:bg-gray-100">
+        <button class="flex items-center justify-center gap-2 flex-1 border rounded-full py-2 px-4 hover:bg-gray-100" [routerLink]="['/customer/profile']">
           <!-- Profile Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.121 17.804A9 9 0 1112 21a9 9 0 01-6.879-3.196zM15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -168,7 +168,7 @@
         </button>
 
         <!-- Cart Button -->
-        <button class="flex items-center justify-center gap-2 flex-1 border rounded-full py-2 px-4 hover:bg-gray-100">
+        <button class="flex items-center justify-center gap-2 flex-1 border rounded-full py-2 px-4 hover:bg-gray-100" [routerLink]="['/customer/cart']">
           <!-- Cart Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 7.5M7 13h10l1.5 7.5M16 13l1.5 7.5M9 21h6" />
@@ -180,6 +180,7 @@
         <button 
           type="button"
           class="flex items-center justify-center gap-2 flex-1 border rounded-full py-2 px-4 hover:bg-gray-100 transition-colors"
+          [routerLink]="['/customer/orders']"
         >
           <!-- Receipt Icon -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
+var _a, _b, _c, _d;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderService = void 0;
 const typeorm_1 = require("@nestjs/typeorm");
@@ -93,10 +94,7 @@ exports.OrderService = OrderService = __decorate([
     __param(2, (0, common_1.Inject)('KAFKA_SERVICE')),
     __param(4, (0, typeorm_1.InjectRepository)(user_entity_1.User)),
     __param(5, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
-    __metadata("design:paramtypes", [typeorm_2.Repository, redis_service_1.RedisService,
-        microservices_1.ClientKafka,
-        nestjs_rabbitmq_1.AmqpConnection,
-        typeorm_2.Repository,
-        typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object, redis_service_1.RedisService,
+        microservices_1.ClientKafka, typeof (_b = typeof nestjs_rabbitmq_1.AmqpConnection !== "undefined" && nestjs_rabbitmq_1.AmqpConnection) === "function" ? _b : Object, typeof (_c = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _c : Object, typeof (_d = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _d : Object])
 ], OrderService);
 //# sourceMappingURL=order.service.js.map

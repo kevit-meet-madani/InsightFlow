@@ -8,13 +8,16 @@ export class Product {
   @Column()
   name: string;
 
+  @Column({ nullable: true })
+  category: string;
+
   @Column('decimal', { precision: 10, scale: 2 })
   price: number;
 
-  @Column({ default: true })
-  isAvailable: boolean;
+  @Column({ default: 'INSTOCK' })
+  inventoryStatus:string;
 
-  @Column({ type: 'uuid', nullable: true })
+  @Column({ type: 'uuid', nullable: true })           
   vendorId?: string;
 
   @CreateDateColumn()
@@ -22,4 +25,10 @@ export class Product {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @Column({ nullable: true })
+  rating: number;   
+
+  @Column({ nullable: true })
+  image: string;
 }

@@ -10,22 +10,12 @@ export declare class AuthService {
     constructor(usersService: UsersService, jwtService: JwtService, redisService: RedisService);
     register(userDto: CreateUserDto): Promise<{
         message: string;
-        user: {
-            id: string;
-            name: string;
-            email: string;
-            role: string;
-            avatarUrl?: string;
-            addresses?: string[];
-            isActive: boolean;
-            createdAt: Date;
-            updatedAt: Date;
-        };
+        user: any;
     }>;
     login(loginDto: Login): Promise<{
-        access_token: string;
+        access_token: any;
     }>;
     verifyToken(token: string): Promise<any>;
-    refreshAccessToken(userId: number, providedToken: string): Promise<string>;
+    refreshAccessToken(userId: number, providedToken: string): Promise<any>;
     logout(body: any): Promise<void>;
 }

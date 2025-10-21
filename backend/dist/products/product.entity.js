@@ -14,11 +14,14 @@ const typeorm_1 = require("typeorm");
 let Product = class Product {
     id;
     name;
+    category;
     price;
-    isAvailable;
+    inventoryStatus;
     vendorId;
     createdAt;
     updatedAt;
+    rating;
+    image;
 };
 exports.Product = Product;
 __decorate([
@@ -30,13 +33,17 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "name", void 0);
 __decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Product.prototype, "category", void 0);
+__decorate([
     (0, typeorm_1.Column)('decimal', { precision: 10, scale: 2 }),
     __metadata("design:type", Number)
 ], Product.prototype, "price", void 0);
 __decorate([
-    (0, typeorm_1.Column)({ default: true }),
-    __metadata("design:type", Boolean)
-], Product.prototype, "isAvailable", void 0);
+    (0, typeorm_1.Column)({ default: 'INSTOCK' }),
+    __metadata("design:type", String)
+], Product.prototype, "inventoryStatus", void 0);
 __decorate([
     (0, typeorm_1.Column)({ type: 'uuid', nullable: true }),
     __metadata("design:type", String)
@@ -49,6 +56,14 @@ __decorate([
     (0, typeorm_1.UpdateDateColumn)(),
     __metadata("design:type", Date)
 ], Product.prototype, "updatedAt", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", Number)
+], Product.prototype, "rating", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Product.prototype, "image", void 0);
 exports.Product = Product = __decorate([
     (0, typeorm_1.Entity)({ name: 'products' })
 ], Product);

@@ -1,0 +1,102 @@
+<app-customernavbar></app-customernavbar>
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow-md p-8">
+
+    <h1 class="text-3xl font-bold text-gray-800 mb-6 text-center">
+      My Profile
+    </h1>
+
+    <!-- Name & Email -->
+    <div class="mb-6">
+      <label class="block text-gray-700 font-semibold mb-2">Full Name</label>
+      <input
+        type="text"
+        [(ngModel)]="name"
+        class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]"
+      />
+    </div>
+
+    <div class="mb-6">
+      <label class="block text-gray-700 font-semibold mb-2">Email</label>
+      <input
+        type="email"
+        [(ngModel)]="email"
+        class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]"
+      />
+    </div>
+
+    <!-- Password -->
+    <div class="mb-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div>
+        <label class="block text-gray-700 font-semibold mb-2">New Password</label>
+        <input
+          type="password"
+          [(ngModel)]="password"
+          placeholder="Enter new password"
+          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]"
+        />
+      </div>
+      <div>
+        <label class="block text-gray-700 font-semibold mb-2">Confirm Password</label>
+        <input
+          type="password"
+          [(ngModel)]="confirmPassword"
+          placeholder="Confirm password"
+          class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1E3A8A]"
+        />
+      </div>
+    </div>
+
+    <!-- Addresses -->
+    <div class="mb-6">
+      <h2 class="text-xl font-semibold text-gray-800 mb-4">Addresses</h2>
+
+      <div *ngFor="let addr of addresses" class="flex justify-between items-center mb-2 p-3 border rounded-lg bg-gray-50">
+        <div>
+          <p class="font-semibold text-gray-700">{{ addr.label }}</p>
+          <p class="text-gray-600 text-sm">{{ addr.address }}</p>
+        </div>
+        <button
+          class="text-red-600 hover:text-red-800 font-semibold"
+          (click)="removeAddress(addr.id)"
+        >
+          Remove
+        </button>
+      </div>
+
+      <!-- Add new address -->
+      <div class="flex flex-col md:flex-row gap-3 mt-4">
+        <input
+          type="text"
+          [(ngModel)]="newAddressLabel"
+          placeholder="Label (Home, Work)"
+          class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#14B8A6]"
+        />
+        <input
+          type="text"
+          [(ngModel)]="newAddressValue"
+          placeholder="Address"
+          class="flex-2 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#14B8A6]"
+        />
+        <button
+          (click)="addAddress()"
+          class="px-6 py-3 bg-[#1E3A8A] hover:bg-[#162766] text-white rounded-xl font-semibold transition"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+
+    <!-- Update Profile Button -->
+    <div class="text-center mt-6">
+      <button
+        (click)="updateProfile()"
+        class="px-8 py-3 bg-[#14B8A6] hover:bg-[#0f9e94] text-white rounded-xl font-semibold transition"
+      >
+        Update Profile
+      </button>
+    </div>
+
+  </div>
+</div>
+<app-footer></app-footer>

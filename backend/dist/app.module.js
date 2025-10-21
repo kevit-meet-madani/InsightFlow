@@ -57,6 +57,7 @@ const notification_entity_1 = require("./notification/notification.entity");
 const inventory_entity_1 = require("./invnentory/inventory.entity");
 const shipment_entity_1 = require("./shipment/shipment.entity");
 const payment_entity_1 = require("./payment/payment.entity");
+const product_module_1 = require("./products/product.module");
 dotenv.config();
 let AppModule = class AppModule {
 };
@@ -80,6 +81,7 @@ exports.AppModule = AppModule = __decorate([
             order_module_1.OrderModule,
             jwt_1.JwtModule,
             redis_module_1.RedisModule,
+            product_module_1.ProductModule
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

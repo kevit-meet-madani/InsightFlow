@@ -1,55 +1,148 @@
-<div class="min-h-screen bg-gray-50 pt-24 px-6 md:px-12 text-black">
-  <h1 class="text-3xl font-bold text-gray-800 mb-6">Your Orders</h1>
+<app-customernavbar></app-customernavbar>
+<div class="min-h-screen bg-gray-50 p-6">
+  <div class="max-w-6xl mx-auto">
 
-  <!-- Orders List -->
-  <div class="grid gap-6">
-    <div
-      *ngFor="let order of orders"
-      class="bg-white rounded-xl shadow-md p-6 hover:-translate-y-1 transition cursor-pointer"
-      (click)="viewOrder(order.id)"
-    >
-      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center">
-        <div>
-          <h2 class="text-lg font-semibold text-gray-800">
-            Order #{{ order.id }}
-          </h2>
-          <p class="text-gray-600 text-sm">
-            {{ order.date | date: 'mediumDate' }}
-          </p>
-        </div>
+    <!-- Page Heading -->
+    <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">
+      My Orders
+    </h1>
 
-        <!-- Status Badge -->
+    <!-- ACTIVE ORDERS -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-semibold text-[#1E3A8A] mb-4 flex items-center gap-2">
+        <i class="pi pi-truck text-[#14B8A6]"></i>
+        Active Orders
+      </h2>
+
+      <div *ngIf="activeOrders.length; else noActive">
         <div
-          class="mt-3 sm:mt-0 px-3 py-1 rounded-full text-sm font-medium text-white"
-          [ngClass]="{
-            'bg-yellow-500': order.status === 'PENDING',
-            'bg-blue-500': order.status === 'PAID',
-            'bg-purple-500': order.status === 'ACCEPTED',
-            'bg-orange-500': order.status === 'SHIPPED',
-            'bg-green-500': order.status === 'DELIVERED'
-          }"
+          *ngFor="let order of activeOrders"
+          class="bg-white rounded-2xl shadow-md mb-5 p-5 hover:shadow-lg transition"
         >
-          {{ order.status }}
+          <div class="flex flex-col md:flex-row items-center gap-5">
+            <img
+              [src]="order.productImage"
+              alt="{{order.productName}}"
+              class="w-24 h-24 rounded-xl object-cover"
+            />
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-gray-800">
+                {{ order.productName }}
+              </h3>
+              <p class="text-gray-500 text-sm">Order ID: {{ order.id }}</p>
+              <p class="text-gray-700 mt-1 font-medium">
+                Amount: ₹{{ order.amount }}
+              </p>
+              <p class="mt-2 text-sm text-gray-500">
+                Ordered on: {{ order.dateOrdered | date: 'mediumDate' }}
+              </p>
+            </div>
+
+            <div class="text-center">
+              <span
+                class="px-4 py-1 rounded-full text-sm font-semibold"
+                [ngClass]="getStatusColor(order.status)"
+              >
+                {{ order.status }}
+              </span>
+              <p class="text-xs text-gray-400 mt-2">
+                Expected: {{ order.expectedDelivery | date: 'mediumDate' }}
+              </p>
+            </div>
+          </div>
+
+          <!-- Timeline -->
+          
+        <button (click)="showTrack()">Track Order</button>
+
+        <div class="card" *ngIf="showtrack">
+    <p-timeline [value]="events" align="alternate" styleClass="customized-timeline">
+        <ng-template pTemplate="marker" let-event>
+            <span 
+                class="flex w-2rem h-2rem align-items-center justify-content-center text-white border-circle z-1 shadow-1" 
+                [style]="{ 'background-color': event.color }">
+                    <i [class]="event.icon"></i>
+            </span>
+        </ng-template>
+        <ng-template pTemplate="content" let-event>
+            <p-card [header]="event.status" [subheader]="event.date">
+                <img 
+                    *ngIf="event.image" 
+                    [src]="'https://primefaces.org/cdn/primeng/images/demo/product/' + event.image"
+                    [alt]="event.name"
+                    width="200" 
+                    class="shadow-2" />
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
+                    neque quas!
+                </p>
+                <p-button label="Read more" [text]="true" />
+            </p-card>
+        </ng-template>
+    </p-timeline>
+</div>
         </div>
       </div>
 
-      <div class="mt-4 border-t border-gray-200 pt-4 flex justify-between">
-        <div>
-          <!-- <p class="text-sm text-gray-500">Items: {{ order.items.length }}</p> -->
-          <p class="text-sm text-gray-500">Total: ₹{{ order.total }}</p>
-        </div>
-        <button
-          class="text-blue-600 hover:text-blue-800 text-sm font-medium"
-          (click)="trackOrder(order.id); $event.stopPropagation()"
+      <ng-template #noActive>
+        <p class="text-gray-500 italic text-center mt-4">
+          You have no active orders right now.
+        </p>
+      </ng-template>
+    </div>
+
+    <!-- ORDER HISTORY -->
+    <div>
+      <h2 class="text-2xl font-semibold text-[#1E3A8A] mb-4 flex items-center gap-2">
+        <i class="pi pi-history text-[#14B8A6]"></i>
+        Order History
+      </h2>
+
+      <div *ngIf="orderHistory.length; else noHistory">
+        <div
+          *ngFor="let order of orderHistory"
+          class="bg-white rounded-2xl shadow-md mb-5 p-5 hover:shadow-lg transition"
         >
-          Track Order →
-        </button>
+          <div class="flex flex-col md:flex-row items-center gap-5">
+            <img
+              [src]="order.productImage"
+              alt="{{order.productName}}"
+              class="w-24 h-24 rounded-xl object-cover"
+            />
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-gray-800">
+                {{ order.productName }}
+              </h3>
+              <p class="text-gray-500 text-sm">Order ID: {{ order.id }}</p>
+              <p class="text-gray-700 mt-1 font-medium">
+                Amount: ₹{{ order.amount }}
+              </p>
+              <p class="mt-2 text-sm text-gray-500">
+                Ordered on: {{ order.dateOrdered | date: 'mediumDate' }}
+              </p>
+            </div>
+
+            <div class="text-center">
+              <span
+                class="px-4 py-1 rounded-full text-sm font-semibold"
+                [ngClass]="getStatusColor(order.status)"
+              >
+                {{ order.status }}
+              </span>
+              <p class="text-xs text-gray-400 mt-2">
+                Delivered on: {{ order.expectedDelivery | date: 'mediumDate' }}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+
+      <ng-template #noHistory>
+        <p class="text-gray-500 italic text-center mt-4">
+          No previous orders found.
+        </p>
+      </ng-template>
     </div>
   </div>
-
-  <!-- Empty State -->
-  <div *ngIf="orders.length === 0" class="text-center text-gray-500 mt-20">
-    <p class="text-lg">No orders found.</p>
-  </div>
 </div>
+<app-footer></app-footer>

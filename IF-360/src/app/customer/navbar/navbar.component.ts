@@ -19,9 +19,9 @@ export class CustomerNavbarComponent {
   notifications: any[] = [
     { message: 'New order received', read: false },
     { message: 'Stock low on product X', read: false },
-    { message: 'Server maintenance scheduled', read: true },
+    // { message: 'Server maintenance scheduled', read: true },
   ];
-  unreadCount = 3
+  unreadCount = this.notifications.length
 
   filterProducts() {
     // const q = this.query.trim().toLowerCase();

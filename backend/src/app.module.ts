@@ -16,6 +16,7 @@ import { Notification } from './notification/notification.entity';
 import { Inventory } from './invnentory/inventory.entity';
 import { Shipment } from './shipment/shipment.entity';
 import { Payment } from './payment/payment.entity';
+import { ProductModule } from './products/product.module';
 
 
 dotenv.config();
@@ -38,7 +39,7 @@ dotenv.config();
     OrderModule,
     JwtModule,
     RedisModule,
-    
+    ProductModule  
   ],
   controllers: [AppController],
   providers: [AppService],

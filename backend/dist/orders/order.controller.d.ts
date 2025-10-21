@@ -5,7 +5,7 @@ export declare class OrderController {
     constructor(orderService: OrderService);
     createOrder(body: CreateOrderDto): Promise<{
         message: string;
-        order: import("./order.entity").Order;
+        order: any;
     }>;
-    getAllOrders(): Promise<import("./order.entity").Order[]>;
+    getAllOrders(): any;
 }

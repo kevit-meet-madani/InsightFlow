@@ -2,7 +2,8 @@ import { Component, NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { CustomerHomeComponent } from "./home/home.component";
 import { OrdersComponent } from "./orders/orders.component";
-import { OrderTrackerComponent } from "./order-tracker/order-tracker.component";
+import { CartComponent } from "./cart/cart.component";
+import { ProfileComponent } from "./profile/profile.component";
 
 export const routes = [
   {
@@ -14,8 +15,12 @@ export const routes = [
     component:OrdersComponent
   },
   {
-    path:'order-tracker',
-    component:OrderTrackerComponent
+    path:'cart',
+    component:CartComponent
+  },
+  {
+    path:'profile',
+    component:ProfileComponent
   }
 ]
 

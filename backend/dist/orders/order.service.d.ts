@@ -16,7 +16,7 @@ export declare class OrderService {
     constructor(orderRepo: Repository<Order>, redis: RedisService, kafkaClient: ClientKafka, amqpConnection: AmqpConnection, userRepo: Repository<User>, productRepo: Repository<Product>);
     createOrder(data: CreateOrderDto): Promise<{
         message: string;
-        order: Order;
+        order: any;
     }>;
-    getAllOrders(): Promise<Order[]>;
+    getAllOrders(): any;
 }

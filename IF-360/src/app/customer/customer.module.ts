@@ -16,8 +16,12 @@ import { CustomerFooterComponent } from './footer/footer.component';
 import { BadgeModule } from 'primeng/badge';
 import { CustomerService } from './customer.service';
 import { OrdersComponent } from './orders/orders.component';
-import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
-
+import { SkeletonModule } from 'primeng/skeleton';
+import { CartComponent } from './cart/cart.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FooterComponent } from "../landing/footer/footer.component";
+import { TimelineModule } from 'primeng/timeline';
+import { CardModule } from 'primeng/card';
 
 @NgModule({
   declarations: [
@@ -27,20 +31,25 @@ import { OrderTrackerComponent } from './order-tracker/order-tracker.component';
     FilterComponent,
     CustomerFooterComponent,
     OrdersComponent,
-    OrderTrackerComponent
+    CartComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes),// ✅ lazy-loaded child routes
-    FormsModule, 
+    RouterModule.forChild(routes), // ✅ lazy-loaded child routes
+    FormsModule,
     RouterLink,
     DataViewModule,
     TagModule,
     ButtonModule,
     NgxPaginationModule,
     BadgeModule,
-    HttpClientModule
-  ],
+    HttpClientModule,
+    SkeletonModule,
+    FooterComponent,
+    TimelineModule,
+    CardModule
+],
   providers:[
     CustomerService,
     provideHttpClient(withFetch())

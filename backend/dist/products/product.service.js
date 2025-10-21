@@ -13,40 +13,22 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UsersService = void 0;
-const common_1 = require("@nestjs/common");
+exports.ProductService = void 0;
 const typeorm_1 = require("@nestjs/typeorm");
+const product_entity_1 = require("./product.entity");
 const typeorm_2 = require("typeorm");
-const user_entity_1 = require("./user.entity");
-let UsersService = class UsersService {
-    userRepo;
-    constructor(userRepo) {
-        this.userRepo = userRepo;
+let ProductService = class ProductService {
+    productRepo;
+    constructor(productRepo) {
+        this.productRepo = productRepo;
     }
-    createUser(data) {
-        const res = this.userRepo.create(data);
-        return this.userRepo.save(res);
-    }
-    findByEmail(email) {
-        return this.userRepo.findOne({ where: { email }, select: ['password', 'role', 'id'] });
-    }
-    getUserById(id) {
-        return this.userRepo.findOneBy({});
-    }
-    findAll() {
-        return this.userRepo.find();
-    }
-    updateUser(id, data) {
-        return this.userRepo.update(id, data);
-    }
-    deleteUser(id) {
-        return this.userRepo.delete(id);
+    getProducts() {
+        return this.productRepo.find();
     }
 };
-exports.UsersService = UsersService;
-exports.UsersService = UsersService = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, typeorm_1.InjectRepository)(user_entity_1.User)),
+exports.ProductService = ProductService;
+exports.ProductService = ProductService = __decorate([
+    __param(0, (0, typeorm_1.InjectRepository)(product_entity_1.Product)),
     __metadata("design:paramtypes", [typeof (_a = typeof typeorm_2.Repository !== "undefined" && typeorm_2.Repository) === "function" ? _a : Object])
-], UsersService);
-//# sourceMappingURL=users.service.js.map
+], ProductService);
+//# sourceMappingURL=product.service.js.map
